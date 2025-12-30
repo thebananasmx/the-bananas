@@ -1,0 +1,43 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased;
+    font-variant-ligatures: none;
+  }
+
+  /* Global lowercase aesthetic for the brand */
+  h1, h2, h3, h4, button, a {
+    @apply lowercase;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(255, 224, 0, 0.3);
+  }
+}
+
+::selection {
+  @apply bg-bananas text-black;
+}
+
+/* Custom scrollbar for brand consistency */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-bananas;
+}
