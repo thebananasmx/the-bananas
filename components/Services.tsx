@@ -2,56 +2,30 @@ import React from 'react';
 
 const Services: React.FC = () => {
   const services = [
-    { 
-      title: 'Auditoría UX/UI', 
-      desc: 'Eliminamos las barreras que impiden que tus clientes finalicen su compra. Optimización basada en comportamiento real.', 
-      icon: '01'
-    },
-    { 
-      title: 'Shopify Pro', 
-      desc: 'Desarrollo a medida sin límites. Desde integraciones complejas hasta migraciones críticas desde otras plataformas.', 
-      icon: '02'
-    },
-    { 
-      title: 'Estrategia CRO', 
-      desc: 'Aumentamos tu ticket promedio y tasa de conversión mediante experimentación continua y análisis de datos.', 
-      icon: '03'
-    }
+    { title: 'Auditoría UX/UI', icon: '🔍' },
+    { title: 'Desarrollo Shopify', icon: '💻' },
+    { title: 'Estrategia CRO', icon: '📈' },
+    { title: 'Optimización SEO', icon: '🚀' },
+    { title: 'Diseño Web', icon: '🎨' }
   ];
 
   return (
-    <section id="servicios" className="py-40 bg-black relative">
+    <section id="servicios" className="py-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="mb-24">
-          <h2 className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">
-            SOLUCIONES DE <span className="text-[#FFE000]">ALTO VOLTAJE</span>
-          </h2>
-          <div className="w-24 h-2 bg-[#FFE000]"></div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <h2 className="text-3xl font-black mb-16 tracking-tight">Featured services</h2>
+        
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {services.map((s, i) => (
-            <div 
-              key={i} 
-              className="group relative bg-black p-12 border border-zinc-900 hover:border-[#FFE000] transition-all duration-300 flex flex-col justify-between min-h-[450px] overflow-hidden"
-            >
-              {/* Card Number Background */}
-              <div className="absolute -right-8 -top-8 text-[180px] font-black text-zinc-900/30 group-hover:text-[#FFE000]/10 transition-colors">
+            <div key={i} className="group cursor-pointer">
+              <div className="aspect-[3/4] bg-[#EBEBEB] rounded-[40px] mb-4 flex items-center justify-center text-6xl group-hover:scale-[1.02] transition-all">
                 {s.icon}
               </div>
-
-              <div className="relative z-10">
-                <div className="w-12 h-1 bg-[#FFE000] mb-8 group-hover:w-24 transition-all duration-500"></div>
-                <h3 className="text-4xl font-black mb-6 uppercase leading-none tracking-tighter">{s.title}</h3>
-                <p className="text-zinc-500 group-hover:text-zinc-300 text-lg leading-snug transition-colors">
-                  {s.desc}
-                </p>
-              </div>
-              
-              <div className="relative z-10 mt-12">
-                <button className="text-[10px] font-black uppercase tracking-widest text-[#FFE000] flex items-center group-hover:gap-4 transition-all">
-                  Saber más <span className="ml-2">→</span>
-                </button>
+              <div className="flex justify-between items-start px-2">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Nuevo</span>
+                  <h3 className="text-sm font-black uppercase leading-none mt-1">{s.title}</h3>
+                </div>
+                <span className="text-xs font-bold text-zinc-400">$PRO</span>
               </div>
             </div>
           ))}
