@@ -1,54 +1,41 @@
-
 import React from 'react';
 
 const Navbar: React.FC = () => {
-  const navigate = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    e.preventDefault();
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md py-6 border-b border-white/5">
-      <div className="container mx-auto px-6 grid grid-cols-3 items-center">
-        {/* Left Section */}
-        <div className="flex items-center space-x-4">
-          <a 
-            href="/servicios" 
-            onClick={(e) => navigate(e, '/servicios')}
-            className="text-white hover:text-bananas transition-colors text-xs font-black uppercase tracking-widest hidden md:block"
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-white/5 py-4">
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-2xl font-black tracking-tighter text-[#FFE000]"
           >
-            servicios
-          </a>
-          <a 
-            href="/clientes" 
-            onClick={(e) => navigate(e, '/clientes')}
-            className="text-white hover:text-bananas transition-colors text-xs font-black uppercase tracking-widest hidden md:block"
-          >
-            clientes
-          </a>
+            THE BANANAS
+          </button>
         </div>
 
-        {/* Center Section: Logo */}
-        <div className="text-center">
-          <a 
-            href="/" 
-            onClick={(e) => navigate(e, '/')}
-            className="text-2xl md:text-3xl font-black tracking-tighter text-bananas"
-          >
-            thebananas
-          </a>
+        {/* Links */}
+        <div className="hidden md:flex items-center space-x-10">
+          <button onClick={() => scrollTo('servicios')} className="text-sm font-medium hover:text-[#FFE000] transition-colors uppercase tracking-widest">Servicios</button>
+          <button onClick={() => scrollTo('clientes')} className="text-sm font-medium hover:text-[#FFE000] transition-colors uppercase tracking-widest">Clientes</button>
+          <button onClick={() => scrollTo('contacto')} className="text-sm font-medium hover:text-[#FFE000] transition-colors uppercase tracking-widest">Contacto</button>
         </div>
 
-        {/* Right Section */}
-        <div className="flex items-center justify-end">
-          <a 
-            href="/contacto" 
-            onClick={(e) => navigate(e, '/contacto')}
-            className="bg-bananas text-black px-6 py-2 rounded-sm text-xs font-black hover:scale-105 transition-transform shadow-lg shadow-bananas/10 uppercase tracking-tighter"
+        {/* CTA */}
+        <div className="flex items-center">
+          <button 
+            onClick={() => scrollTo('contacto')}
+            className="bg-[#FFE000] text-black px-6 py-2 rounded-md text-xs font-black uppercase hover:scale-105 active:scale-95 transition-all"
           >
-            cotizar
-          </a>
+            Cotizar
+          </button>
         </div>
       </div>
     </nav>
