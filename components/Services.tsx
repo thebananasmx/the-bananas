@@ -4,59 +4,54 @@ const Services: React.FC = () => {
   const services = [
     { 
       title: 'Auditoría UX/UI', 
-      desc: 'Analizamos cada punto de fricción en tu tienda para optimizar el viaje de compra y reducir el abandono de carrito.', 
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      )
+      desc: 'Eliminamos las barreras que impiden que tus clientes finalicen su compra. Optimización basada en comportamiento real.', 
+      icon: '01'
     },
     { 
-      title: 'Desarrollo Shopify Pro', 
-      desc: 'Expertos en Liquid y aplicaciones privadas. Creamos tiendas veloces, escalables y optimizadas para SEO.', 
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      )
+      title: 'Shopify Pro', 
+      desc: 'Desarrollo a medida sin límites. Desde integraciones complejas hasta migraciones críticas desde otras plataformas.', 
+      icon: '02'
     },
     { 
       title: 'Estrategia CRO', 
-      desc: 'No solo traemos tráfico, lo convertimos. Estrategias basadas en datos para maximizar tu Retorno de Inversión.', 
-      icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      )
+      desc: 'Aumentamos tu ticket promedio y tasa de conversión mediante experimentación continua y análisis de datos.', 
+      icon: '03'
     }
   ];
 
   return (
-    <section id="servicios" className="py-32 bg-black border-y border-white/5">
+    <section id="servicios" className="py-40 bg-black relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20">
-          <div className="max-w-2xl">
-            <h2 className="text-5xl md:text-7xl font-black mb-6 uppercase leading-none">
-              Nuestros <span className="text-[#FFE000]">Servicios</span>
-            </h2>
-            <p className="text-xl text-zinc-500 font-medium">
-              Especialización profunda para marcas que no se conforman con lo ordinario.
-            </p>
-          </div>
+        <div className="mb-24">
+          <h2 className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">
+            SOLUCIONES DE <span className="text-[#FFE000]">ALTO VOLTAJE</span>
+          </h2>
+          <div className="w-24 h-2 bg-[#FFE000]"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {services.map((s, i) => (
             <div 
               key={i} 
-              className="group bg-zinc-900/50 p-10 rounded-md border-2 border-zinc-800 hover:border-[#FFE000] hover:border-[4px] transition-all duration-200 flex flex-col justify-between min-h-[400px]"
+              className="group relative bg-black p-12 border border-zinc-900 hover:border-[#FFE000] transition-all duration-300 flex flex-col justify-between min-h-[450px] overflow-hidden"
             >
-              <div className="text-[#FFE000] mb-8 transition-transform group-hover:scale-110 duration-300">
+              {/* Card Number Background */}
+              <div className="absolute -right-8 -top-8 text-[180px] font-black text-zinc-900/30 group-hover:text-[#FFE000]/10 transition-colors">
                 {s.icon}
               </div>
-              <div>
-                <h3 className="text-3xl font-black mb-4 uppercase tracking-tighter">{s.title}</h3>
-                <p className="text-zinc-400 text-lg leading-snug">{s.desc}</p>
+
+              <div className="relative z-10">
+                <div className="w-12 h-1 bg-[#FFE000] mb-8 group-hover:w-24 transition-all duration-500"></div>
+                <h3 className="text-4xl font-black mb-6 uppercase leading-none tracking-tighter">{s.title}</h3>
+                <p className="text-zinc-500 group-hover:text-zinc-300 text-lg leading-snug transition-colors">
+                  {s.desc}
+                </p>
+              </div>
+              
+              <div className="relative z-10 mt-12">
+                <button className="text-[10px] font-black uppercase tracking-widest text-[#FFE000] flex items-center group-hover:gap-4 transition-all">
+                  Saber más <span className="ml-2">→</span>
+                </button>
               </div>
             </div>
           ))}

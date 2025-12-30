@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ContactFormData } from '../types';
+import { ContactFormData } from '../types.ts';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -14,98 +14,92 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Skeleton for Firebase Firestore integration
     try {
-      console.log('Enviando datos a la nube...', formData);
-      // await addDoc(collection(db, "leads"), { ...formData, timestamp: new Date() });
-      
-      // Simulate delay
+      console.log('Lead recibido:', formData);
       await new Promise(resolve => setTimeout(resolve, 1500));
-      alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+      alert('¡Recibido! Nos pondremos en contacto contigo en breve.');
       setFormData({ name: '', email: '', storeUrl: '', message: '' });
     } catch (error) {
-      console.error('Error al enviar:', error);
+      console.error('Error:', error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="contacto" className="py-32 bg-black border-t border-white/5">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <h2 className="text-5xl md:text-8xl font-black mb-8 uppercase leading-[0.85]">
-              Hablemos <br/><span className="text-[#FFE000]">Negocio.</span>
-            </h2>
-            <p className="text-xl text-zinc-400 font-medium mb-12 max-w-md">
-              ¿Listo para escalar? Déjanos tus datos y un estratega senior analizará tu caso en menos de 24 horas.
-            </p>
-            
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-zinc-900 rounded-md flex items-center justify-center text-[#FFE000]">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                </div>
-                <span className="font-bold text-zinc-300">hola@thebananas.com.mx</span>
+    <section id="contacto" className="py-40 bg-black relative">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="bg-zinc-900/30 p-8 md:p-20 rounded-2xl border border-zinc-800 relative overflow-hidden">
+          {/* Accent glow for the box */}
+          <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[#FFE000]/10 rounded-full blur-[100px]"></div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
+            <div>
+              <h2 className="text-6xl md:text-8xl font-black mb-8 uppercase leading-[0.85] tracking-tighter">
+                ¿TIENES UNA <br/><span className="text-[#FFE000]">META?</span>
+              </h2>
+              <p className="text-xl text-zinc-400 font-medium mb-12 max-w-sm">
+                Escalamos tiendas de $10k a $100k+ mensuales. Cuéntanos tu situación actual y tracemos el plan.
+              </p>
+              
+              <div className="space-y-4">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600">Contacto Directo</p>
+                <a href="mailto:hola@thebananas.com.mx" className="text-2xl font-bold hover:text-[#FFE000] transition-colors underline decoration-zinc-800 underline-offset-8 decoration-2">
+                  hola@thebananas.com.mx
+                </a>
               </div>
             </div>
-          </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex flex-col space-y-2">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input
                   required
                   type="text"
                   name="name"
                   value={formData.name}
-                  placeholder="Tu Nombre"
+                  placeholder="Tu nombre completo"
                   onChange={handleChange}
-                  className="bg-transparent border-b-2 border-zinc-800 focus:border-[#FFE000] py-4 text-white font-medium outline-none transition-all placeholder:text-zinc-700"
+                  className="bg-black/50 border border-zinc-800 focus:border-[#FFE000] p-5 rounded-lg text-white font-medium outline-none transition-all placeholder:text-zinc-600"
                 />
-              </div>
-              <div className="flex flex-col space-y-2">
                 <input
                   required
                   type="email"
                   name="email"
                   value={formData.email}
-                  placeholder="Email Corporativo"
+                  placeholder="Email de trabajo"
                   onChange={handleChange}
-                  className="bg-transparent border-b-2 border-zinc-800 focus:border-[#FFE000] py-4 text-white font-medium outline-none transition-all placeholder:text-zinc-700"
+                  className="bg-black/50 border border-zinc-800 focus:border-[#FFE000] p-5 rounded-lg text-white font-medium outline-none transition-all placeholder:text-zinc-600"
                 />
               </div>
-            </div>
-            
-            <input
-              type="text"
-              name="storeUrl"
-              value={formData.storeUrl}
-              placeholder="URL de tu tienda (opcional)"
-              onChange={handleChange}
-              className="w-full bg-transparent border-b-2 border-zinc-800 focus:border-[#FFE000] py-4 text-white font-medium outline-none transition-all placeholder:text-zinc-700"
-            />
+              
+              <input
+                type="text"
+                name="storeUrl"
+                value={formData.storeUrl}
+                placeholder="Enlace de tu tienda actual (si tienes)"
+                onChange={handleChange}
+                className="w-full bg-black/50 border border-zinc-800 focus:border-[#FFE000] p-5 rounded-lg text-white font-medium outline-none transition-all placeholder:text-zinc-600"
+              />
 
-            <textarea
-              required
-              name="message"
-              rows={4}
-              value={formData.message}
-              placeholder="¿Cómo podemos ayudarte?"
-              onChange={handleChange}
-              className="w-full bg-transparent border-b-2 border-zinc-800 focus:border-[#FFE000] py-4 text-white font-medium outline-none transition-all resize-none placeholder:text-zinc-700"
-            />
+              <textarea
+                required
+                name="message"
+                rows={4}
+                value={formData.message}
+                placeholder="¿Cuál es tu mayor reto hoy?"
+                onChange={handleChange}
+                className="w-full bg-black/50 border border-zinc-800 focus:border-[#FFE000] p-5 rounded-lg text-white font-medium outline-none transition-all resize-none placeholder:text-zinc-600"
+              />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#FFE000] text-black py-6 rounded-md font-black text-xl uppercase hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
-            >
-              {loading ? 'Enviando...' : 'Enviar Mensaje'}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#FFE000] text-black py-6 rounded-lg font-black text-xl uppercase hover:bg-white hover:text-black transition-all disabled:opacity-50 shadow-[0_10px_40px_-10px_rgba(255,224,0,0.3)]"
+              >
+                {loading ? 'Procesando...' : 'Solicitar Auditoría Gratis'}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
