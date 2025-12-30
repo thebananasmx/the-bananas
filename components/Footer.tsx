@@ -1,6 +1,17 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (to: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const handleStyleGuideClick = (e: React.MouseEvent) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate('/style-guide');
+    }
+  };
+
   return (
     <footer className="py-20 bg-white border-t border-zinc-100">
       <div className="container mx-auto px-6">
@@ -10,12 +21,19 @@ const Footer: React.FC = () => {
             <p className="text-zinc-400 text-xs mt-2 font-bold uppercase tracking-widest">Agencia de eCommerce</p>
           </div>
           
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {['Instagram', 'LinkedIn', 'Clutch'].map((item) => (
               <a key={item} href="#" className="text-xs font-black uppercase tracking-widest border-2 border-transparent hover:border-black rounded-full px-4 py-2 transition-all">
                 {item}
               </a>
             ))}
+            <a 
+              href="/style-guide" 
+              onClick={handleStyleGuideClick}
+              className="text-xs font-black uppercase tracking-widest border-2 border-[#FFFE55] bg-[#FFFE55]/10 rounded-full px-4 py-2 hover:bg-[#FFFE55] transition-all"
+            >
+              Style Guide
+            </a>
           </div>
         </div>
         
