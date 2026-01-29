@@ -7,9 +7,9 @@ const Hero: React.FC = () => {
         {/* Responsive Yellow Container */}
         <div className="w-full md:aspect-[21/8] bg-[#FFFE55] rounded-[60px] md:rounded-full flex flex-col items-center justify-center relative overflow-hidden px-6 py-20 md:py-0 md:px-10 shadow-sm">
           
-          <div className="text-center z-10 max-w-4xl">
+          <div className="text-center z-10 max-w-5xl">
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.9] mb-8 tracking-tighter lowercase">
-              hacemos que tu tienda <br className="hidden md:block"/> venda como churros
+              hacemos que tu tienda <br className="hidden md:block"/> venda como churros de coyoacán
             </h1>
             <div className="flex justify-center">
               <button 
