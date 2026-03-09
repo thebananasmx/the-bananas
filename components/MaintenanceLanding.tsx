@@ -8,10 +8,28 @@ const MaintenanceLanding: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setSubmitted(true);
-    setLoading(false);
+    
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Hubo un error al procesar tu solicitud.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error de conexión. Por favor intenta de nuevo.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -25,7 +43,7 @@ const MaintenanceLanding: React.FC = () => {
             ¡listo! ya estás <br/> en el frutero.
           </h1>
           <p className="text-xl font-medium mb-8">
-            te avisaremos en cuanto pelamos la nueva versión. 🍌
+            te avisaremos en cuanto pelemos la nueva version 🍌
           </p>
           <button 
             onClick={() => setSubmitted(false)}

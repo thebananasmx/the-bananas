@@ -22,11 +22,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4">
-            {['instagram', 'linkedin', 'clutch'].map((item) => (
-              <a key={item} href="#" className="text-base font-medium lowercase tracking-tight border-[1.5px] border-transparent hover:border-black rounded-full px-5 py-2 transition-all">
-                {item}
-              </a>
-            ))}
+            <a 
+              href="https://www.instagram.com/thebananasmx" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-base font-medium lowercase tracking-tight border-[1.5px] border-transparent hover:border-black rounded-full px-5 py-2 transition-all"
+            >
+              instagram
+            </a>
             <a 
               href="/style-guide" 
               onClick={handleStyleGuideClick}
@@ -38,7 +41,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
         
         <div className="mt-16 pt-8 border-t border-zinc-50 flex flex-col md:flex-row justify-between items-center gap-4 text-base font-medium lowercase tracking-tight text-zinc-400">
-          <p>© {new Date().getFullYear()} the bananas. expertos en churros y ventas.</p>
+          <p>© 2026 the bananas. expertos en frutas y ventas.</p>
           <p>hecho con 🍌 en méxico.</p>
         </div>
       </div>
