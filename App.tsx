@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import SocialProof from './components/SocialProof';
-import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import StyleGuide from './pages/StyleGuide';
+import MaintenanceLanding from './components/MaintenanceLanding';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -53,12 +49,8 @@ function App() {
 
   return (
     <div className="bg-white text-black min-h-screen selection:bg-[#FFFE55] selection:text-black relative">
-      <Navbar />
       <main>
-        <Hero />
-        <Services />
-        <SocialProof />
-        <ContactForm />
+        <MaintenanceLanding />
       </main>
       <Footer onNavigate={navigate} />
     </div>
